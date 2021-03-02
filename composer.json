@@ -1,9 +1,9 @@
 {
-    "name": "weigather/apibackup",
+    "name": "weigatherbackup/apibackup",
     "description": "项目备份接口",
     "type": "library",
     "keywords": ["laravel-admin", "extension"],
-    "homepage": "https://github.com/laravel-admin-ext/apibackup",
+    "homepage": "https://github.com/522515341/composer_api_backup.git",
     "license": "MIT",
     "authors": [
         {
