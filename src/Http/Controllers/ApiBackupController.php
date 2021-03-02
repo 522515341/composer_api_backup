@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 use Encore\Admin\Grid\Model;
 use Encore\ApiBackup\ApiBackup;
-require_once "../app/Admin/extensions/laravel-admin-ext/apibackup/sdk/Sdk.php";
-require_once "../app/Admin/extensions/laravel-admin-ext/apibackup/sdk/CapsuleBaseData.php";
+require_once __DIR__."/../../../sdk/Sdk.php";
+require_once __DIR__."/../../../sdk/CapsuleBaseData.php";
 
 class ApiBackupController extends Controller
 {
