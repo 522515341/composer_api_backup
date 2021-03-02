@@ -15,8 +15,15 @@ class ApiBackup extends Extension
     public $assets = __DIR__.'/../resources/assets';
 
     public $menu = [
-        'title' => 'Apibackup',
-        'path'  => 'apibackup',
-        'icon'  => 'fa-gears',
+        [
+            'title' => '库列表',
+            'path'  => 'db_list',
+            'icon'  => 'fa-gears',
+        ],
+        [
+            'title' => '库备份列表',
+            'path'  => '#',
+            'icon'  => 'db_down_list',
+        ],
     ];
 }
