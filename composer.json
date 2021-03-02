@@ -1,5 +1,5 @@
 {
-    "name": "laravel-admin-ext/apibackup",
+    "name": "weigather/apibackup",
     "description": "项目备份接口",
     "type": "library",
     "keywords": ["laravel-admin", "extension"],
