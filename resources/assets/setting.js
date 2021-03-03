@@ -1,3 +1,4 @@
+var a;
 function setting_execute(setting_time_val){
     var setting_time_html = '';
     switch (setting_time_val){
