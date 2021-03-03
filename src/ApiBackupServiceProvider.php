@@ -31,17 +31,9 @@ class ApiBackupServiceProvider extends ServiceProvider
             ApiBackup::routes(__DIR__.'/../routes/web.php');
         });
 
-        // Admin::css('vendor/laravel-admin-ext/apibackup/down.css');
         Admin::js('vendor/laravel-admin-ext/apibackup/layer/layer.js');
         Admin::js('vendor/laravel-admin-ext/apibackup/jquery.form.js');
-        // Admin::js('vendor/laravel-admin-ext/apibackup/functions.js');
+        Admin::css('vendor/laravel-admin-ext/apibackup/setting.css');
+        Admin::js('vendor/laravel-admin-ext/apibackup/setting.js');
     }
-
-    // public function handle()
-    // {
-    //     Admin::booting(function () {
-    //         Admin::js('vendor/laravel-admin-ext/apibackup/layer/layer.js');
-    //         Admin::js('vendor/laravel-admin-ext/apibackup/jquery.form.js');
-    //     });
-    // }
 }

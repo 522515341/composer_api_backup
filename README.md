@@ -15,7 +15,16 @@ laravel-admin extension
 
 ### 其他
  <!-- 在 config/wj_ucenter_login_service.php 中设置相关数据  -->
- 
+ 请在env文件中配置以下三个变量
+ BACKUP_APPID、BACKUP_SECRET、BACKUP_HOST
+
+### 目录设置
+    详情请看：扩展文件->routes->web.php
+    库列表     =>  后台地址/backup/db_list
+    库备份列表 =>  后台地址/backup/db_down_list
+    表列表     =>  后台地址/backup/tables_list
+    表备份列表 =>  后台地址/backup/tables_down_list
+ <!-- 目录设置 -->
 <div>
     <table border="0">
       <tr>
