@@ -85,8 +85,8 @@ class ApiBackupController extends Controller
     {
         $param = Request()->input();
         $setting = $param['setting'];
-        $setting = array_merge($setting,setting_time_execute($setting,0,'save'));
-        $setting = array_merge($setting,setting_time_del($setting,0,'save'));
+        $setting = array_merge($setting,api_setting_time_execute($setting,0,'save'));
+        $setting = array_merge($setting,api_setting_time_del($setting,0,'save'));
         $param['setting'] = $setting;
         unset($param['_token']);
         unset($param['_previous_']);
@@ -106,8 +106,8 @@ class ApiBackupController extends Controller
         $res['code'] == '200' ? $res['list'] = $res['data']['list'][0] : $res['list'] = [];
         if($res['list']){
             $setting = $res['list']['setting'];
-            $setting = array_merge($setting,setting_time_execute($setting,0));
-            $setting = array_merge($setting,setting_time_del($setting,0));
+            $setting = array_merge($setting,api_setting_time_execute($setting,0));
+            $setting = array_merge($setting,api_setting_time_del($setting,0));
             $res['list']['setting'] = $setting;
             $execute = api_option($setting['setting_execute']);
             $del = api_option($setting['setting_del']);

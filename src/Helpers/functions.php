@@ -52,7 +52,7 @@ function api_setting_time_execute($param,$id='0',$type='give'){
     ];
 }
 
-function setting_time_del($param,$id='0',$type='give'){
+function api_setting_time_del($param,$id='0',$type='give'){
     $del_I = isset($param['del_I']) ? preg_replace("/[*\/]/i",'',$param['del_I']) : '30';
     $del_H = isset($param['del_H']) ? preg_replace("/[*\/]/i",'',$param['del_H']) : '1';
     $del_D = isset($param['del_D']) ? preg_replace("/[*\/]/i",'',$param['del_D']) : '3';
