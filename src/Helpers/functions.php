@@ -1,5 +1,5 @@
 <?php
-function setting_time_execute($param,$id='0',$type='give'){
+function api_setting_time_execute($param,$id='0',$type='give'){
     $execute_I = isset($param['execute_I']) ? preg_replace("/[*\/]/i",'',$param['execute_I']) : '30';
     $execute_H = isset($param['execute_H']) ? preg_replace("/[*\/]/i",'',$param['execute_H']) : '1';
     $execute_D = isset($param['execute_D']) ? preg_replace("/[*\/]/i",'',$param['execute_D']) : '3';
