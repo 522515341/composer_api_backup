@@ -136,9 +136,13 @@
                                             <div class="col-sm-10">
                                                 <div class="input-group col-sm-10">
                                                     <select class="form-control setting_setting_execute select2-hidden-accessible" style="width: 100%;" name="setting[setting_execute]" data-value="" tabindex="-1" aria-hidden="true">
-                                                        @foreach ($execute as $v)
-                                                        {{$v}}
-                                                        @endforeach
+                                                        <option value="minute" {{$execute == 'minute' ? 'selected=""' : ''}}>N分钟</option>
+                                                        <option value="hours" {{$execute == 'hours' ? 'selected=""' : ''}}>每小时</option>
+                                                        <option value="n_hours" {{$execute == 'n_hours' ? 'selected=""' : ''}}>N小时</option>
+                                                        <option value="day" {{$execute == 'day' ? 'selected=""' : ''}}>每天</option>
+                                                        <option value="n_day" {{$execute == 'n_day' ? 'selected=""' : ''}}>N天</option>
+                                                        <option value="month" {{$execute == 'month' ? 'selected=""' : ''}}>每月</option>
+                                                        <option value="n_month" {{$execute == 'n_month' ? 'selected=""' : ''}}>N月</option>
                                                     </select>
                                                 </div>
                                                 <div class="setting_execute">
@@ -159,9 +163,13 @@
                                             <div class="col-sm-10">
                                                 <div class="input-group col-sm-10">
                                                     <select class="form-control setting_setting_del select2-hidden-accessible" style="width: 100%;" name="setting[setting_del]" data-value="" tabindex="-1" aria-hidden="true">
-                                                        @foreach ($del as $v)
-                                                        {{$v}}
-                                                        @endforeach
+                                                        <option value="minute" {{$del == 'minute' ? 'selected=""' : ''}}>N分钟</option>
+                                                        <option value="hours" {{$del == 'hours' ? 'selected=""' : ''}}>每小时</option>
+                                                        <option value="n_hours" {{$del == 'n_hours' ? 'selected=""' : ''}}>N小时</option>
+                                                        <option value="day" {{$del == 'day' ? 'selected=""' : ''}}>每天</option>
+                                                        <option value="n_day" {{$del == 'n_day' ? 'selected=""' : ''}}>N天</option>
+                                                        <option value="month" {{$del == 'month' ? 'selected=""' : ''}}>每月</option>
+                                                        <option value="n_month" {{$del == 'n_month' ? 'selected=""' : ''}}>N月</option>
                                                     </select>
                                                 </div>
                                                 <div class="setting_del">

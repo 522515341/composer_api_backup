@@ -186,7 +186,7 @@
                             </div>
                         </td>
                         <td class="column-setting">
-                            <pre>"array (<br>'执行间隔' => '{{$v['setting']['execute_I']}} {{$v['setting']['execute_H']}} {{$v['setting']['execute_D']}} {{$v['setting']['execute_M']}} {{$v['setting']['execute_W']}}'<br>'删除执行间隔' => '{{$v['setting']['del_I']}} {{$v['setting']['del_H']}} {{$v['setting']['del_D']}} {{$v['setting']['del_M']}} {{$v['setting']['del_W']}}'<br>'删除多少天前备份' => '{{$v['setting']['execute_del']}}'<br>'上次执行时间' => '{{$v['setting']['execute_time']}}'<br>)"</pre>
+                            <pre>"array (<br>'执行说明' => {{api_option_note($v['setting']['setting_execute'])}}<br>'执行间隔' => '{{$v['setting']['execute_I']}} {{$v['setting']['execute_H']}} {{$v['setting']['execute_D']}} {{$v['setting']['execute_M']}} {{$v['setting']['execute_W']}}'<br>'删除执行说明' => {{api_option_note($v['setting']['setting_del'])}}<br>'删除执行间隔' => '{{$v['setting']['del_I']}} {{$v['setting']['del_H']}} {{$v['setting']['del_D']}} {{$v['setting']['del_M']}} {{$v['setting']['del_W']}}'<br>'删除多少天前备份' => '{{$v['setting']['execute_del']}}'<br>'上次执行时间' => '{{$v['setting']['execute_time']}}'<br>)"</pre>
                         </td>
                         <td class="column-created_at">{{$v['created_at']}}</td>
                         <td class="column-updated_at">{{$v['updated_at']}}</td>

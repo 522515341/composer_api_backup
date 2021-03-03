@@ -109,13 +109,12 @@ class ApiBackupController extends Controller
             $setting = array_merge($setting,api_setting_time_execute($setting,0));
             $setting = array_merge($setting,api_setting_time_del($setting,0));
             $res['list']['setting'] = $setting;
-            $execute = api_option($setting['setting_execute']);
-            $del = api_option($setting['setting_del']);
+            $execute = $setting['setting_execute'];
+            $del = $setting['setting_del'];
         }else{
-            $execute = api_option();
-            $del = api_option();
+            $execute = 'hours';
+            $del = 'hours';
         }
-        dd($del);
         return Admin::content(function (Content $content) use($res,$execute,$del){
             $content->header('库备份配置修改');
             $content->description('Api接口');
@@ -126,6 +125,10 @@ class ApiBackupController extends Controller
     public function dbEditPost()
     {
         $param = Request()->input();
+        $setting = $param['setting'];
+        $setting = array_merge($setting,api_setting_time_execute($setting,0,'save'));
+        $setting = array_merge($setting,api_setting_time_del($setting,0,'save'));
+        $param['setting'] = $setting;
         unset($param['_token']);
         unset($param['_previous_']);
         $Sdk = new \Sdk();
@@ -204,6 +207,10 @@ class ApiBackupController extends Controller
     public function tablesAddPost()
     {
         $param = Request()->input();
+        $setting = $param['setting'];
+        $setting = array_merge($setting,api_setting_time_execute($setting,0,'save'));
+        $setting = array_merge($setting,api_setting_time_del($setting,0,'save'));
+        $param['setting'] = $setting;
         array_pop($param['tables']);
         unset($param['_token']);
         unset($param['_previous_']);
@@ -223,6 +230,13 @@ class ApiBackupController extends Controller
         $res['code'] == '200' && !empty($res['data']['list']) ? $res['list'] = $res['data']['list'][0] : $res['list'] = [];
         $list = $db = [];
         if($res['list']){
+            $setting = $res['list']['setting'];
+            $setting = array_merge($setting,api_setting_time_execute($setting,0));
+            $setting = array_merge($setting,api_setting_time_del($setting,0));
+            $res['list']['setting'] = $setting;
+            $execute = $setting['setting_execute'];
+            $del = $setting['setting_del'];
+
             $param2 = [
                 'page'=> 1,
                 'back_id' => $res['list']['back_id'],
@@ -235,18 +249,25 @@ class ApiBackupController extends Controller
             $db_list = $Sdk->db_list($param);
             $db_list['code'] == '200' ? $list = $db_list['data']['list'] : $list = [];
             Redis::setex('admin_back_db',300,json_encode($list));
+        }else{
+            $execute = 'hours';
+            $del = 'hours';
         }
                
-        return Admin::content(function (Content $content) use($res,$list,$db){
+        return Admin::content(function (Content $content) use($res,$list,$db,$execute,$del){
             $content->header('表备份配置添加');
             $content->description('Api接口');
-            $content->row(view('apibackup::tables_edit',['res'=>$res,'list'=>$list,'db'=>$db,'table_id'=>Request()->table_id]));
+            $content->row(view('apibackup::tables_edit',['res'=>$res,'list'=>$list,'db'=>$db,'table_id'=>Request()->table_id,'execute'=>$execute,'del'=>$del]));
         });
     }
 
     public function tablesEditPost()
     {
         $param = Request()->input();
+        $setting = $param['setting'];
+        $setting = array_merge($setting,api_setting_time_execute($setting,0,'save'));
+        $setting = array_merge($setting,api_setting_time_del($setting,0,'save'));
+        $param['setting'] = $setting;
         array_pop($param['tables']);
         unset($param['_token']);
         unset($param['_previous_']);

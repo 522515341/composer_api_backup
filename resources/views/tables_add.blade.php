@@ -92,68 +92,68 @@
               <div class="embed-setting-forms">
                 <div class="embed-setting-form fields-group">
                   <div class="form-group">
-                    <label class="col-sm-2  control-label"></label>
-                    <div class="col-sm-8">
-                      <p style="color:red">注意事项：请按照 linux系统上的 crontab 进行设置！！！</p>
-                      <br>
-                      <p>例子： cron(*/5 * * * *)</p>
-                      <p><span style="color: red">注意：填写 cron(* * * * *) 将不会备份</span></p>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 asterisk control-label">执行间隔</label>
-                    <div class="col-sm-8">
+                      <label class="col-sm-2  control-label"></label>
                       <div class="col-sm-8">
-                        <div class="input-group">
-                          <input type="text" id="execute_I" name="setting[execute_I]" value="*" class="form-control setting_execute_I" placeholder="请 输入分钟（0-59）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 分钟（0-59）</span></div>
-                          <input type="text" id="execute_H" name="setting[execute_H]" value="*" class="form-control setting_execute_I" placeholder="输入小时（0-23）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 小时（0-23）</span></div>
-                          <input type="text" id="execute_D" name="setting[execute_D]" value="*" class="form-control setting_execute_I" placeholder="输入天数（1-31）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 天数（1-31）</span></div>
-                          <input type="text" id="execute_M" name="setting[execute_M]" value="*" class="form-control setting_execute_I" placeholder="输入月份（1-12）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 月份（1-12）</span></div>
-                          <input type="text" id="execute_W" name="setting[execute_W]" value="*" class="form-control setting_execute_I" placeholder="输入星期几（0-7），星期天为 0">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 星期几（0-7），星期天为 0</span></div>
-                        </div>
+                          <p style="color:red">注意事项：</p>
+                          <p>每时：每个小时备份</p>
+                          <p>N小时：
+                              <span style="color: red">每隔几个小时</span>进行备份
+                          </p>
+                          <p><span style="color: red">* </span>代表无设置</p>
                       </div>
-                    </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2  control-label"></label>
-                    <div class="col-sm-8">
-                      <br>
-                      <p style="border-top:1px solid rgba(0,0,0,0.3);width:100%"></p>
-                      <p style="color:red;">以下是删除备份间隔</p></div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 asterisk control-label">删除执行间隔</label>
-                    <div class="col-sm-8">
+                      <label class="col-sm-2  control-label">执行间隔</label>
                       <div class="col-sm-8">
-                        <div class="input-group">
-                          <input type="text" id="del_I" name="setting[del_I]" value="*" class="form-control setting_execute_I" placeholder="请 输入分钟（0-59）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 分钟（0-59）</span></div>
-                          <input type="text" id="del_H" name="setting[del_H]" value="*" class="form-control setting_execute_I" placeholder="输入小时（0-23）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 小时（0-23）</span></div>
-                          <input type="text" id="del_D" name="setting[del_D]" value="*" class="form-control setting_execute_I" placeholder="输入天数（1-31）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 天数（1-31）</span></div>
-                          <input type="text" id="del_M" name="setting[del_M]" value="*" class="form-control setting_execute_I" placeholder="输入月份（1-12）">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 月份（1-12）</span></div>
-                          <input type="text" id="del_W" name="setting[del_W]" value="*" class="form-control setting_execute_I" placeholder="输入星期几（0-7），星期天为 0">
-                          <div class="col-sm-8">
-                            <span style="color:red">请输入 星期几（0-7），星期天为 0</span></div>
-                        </div>
+                          <div class="col-sm-10">
+                              <div class="input-group col-sm-10">
+                                  <select class="form-control setting_setting_execute select2-hidden-accessible" style="width: 100%;" name="setting[setting_execute]" data-value="" tabindex="-1" aria-hidden="true">
+                                      <option value="minute">N分钟</option>
+                                      <option value="hours" selected="">每小时</option>
+                                      <option value="n_hours">N小时</option>
+                                      <option value="day">每天</option>
+                                      <option value="n_day">N天</option>
+                                      <option value="month">每月</option>
+                                      <option value="n_month">N月</option>
+                                  </select>
+                              </div>
+                              <div class="setting_execute">
+                                  <div class="setting_execute_div setting_execute_i">
+                                      <input type="text" id="execute_I" name="setting[execute_I]" value="30" class="form-control setting_execute_I" placeholder="输入分钟（0-59）">
+                                      <div class="form-control">分</div></div>
+                                  <input type="hidden" name="setting[execute_H]" value="1">
+                                  <input type="hidden" name="setting[execute_D]" value="3">
+                                  <input type="hidden" name="setting[execute_M]" value="1">
+                                  <input type="hidden" name="setting[execute_W]" value="1">
+                              </div>
+                          </div>
                       </div>
-                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2  control-label">删除执行间隔</label>
+                      <div class="col-sm-8">
+                          <div class="col-sm-10">
+                              <div class="input-group col-sm-10">
+                                  <select class="form-control setting_setting_del select2-hidden-accessible" style="width: 100%;" name="setting[setting_del]" data-value="" tabindex="-1" aria-hidden="true">
+                                      <option value="minute">N分钟</option>
+                                      <option value="hours" selected="">每小时</option>
+                                      <option value="n_hours">N小时</option>
+                                      <option value="day">每天</option>
+                                      <option value="n_day">N天</option>
+                                      <option value="month">每月</option>
+                                      <option value="n_month">N月</option>
+                                  </select>
+                              </div>
+                              <div class="setting_del">
+                                  <div class="setting_del_div setting_del_i">
+                                      <input type="text" id="del_I" name="setting[del_I]" value="30" class="form-control setting_del_I" placeholder="输入分钟（0-59）">
+                                      <div class="form-control">分</div></div>
+                                  <input type="hidden" name="setting[del_H]" value="1">
+                                  <input type="hidden" name="setting[del_D]" value="3">
+                                  <input type="hidden" name="setting[del_M]" value="1">
+                                  <input type="hidden" name="setting[del_W]" value="1"></div>
+                          </div>
+                      </div>
                   </div>
                   <div class="form-group  ">
                     <label for="execute_del" class="col-sm-2 asterisk control-label">删除几天前的备份</label>
@@ -208,6 +208,16 @@
 </div>
 
 <script type="text/javascript">
+execute_I = $('input[name="setting[execute_I]"]').val()
+execute_H = $('input[name="setting[execute_H]"]').val();
+execute_D = $('input[name="setting[execute_D]"]').val();
+execute_M = $('input[name="setting[execute_M]"]').val();
+execute_W = $('input[name="setting[execute_W]"]').val();
+del_I = $('input[name="setting[del_I]"]').val();
+del_H = $('input[name="setting[del_H]"]').val();
+del_D = $('input[name="setting[del_D]"]').val();
+del_M = $('input[name="setting[del_M]"]').val();
+del_W = $('input[name="setting[del_W]"]').val();
 var csrf_token = '{{csrf_token()}}'
 $(document).ready(function(){
     $('.form-horizontal').ajaxForm({
@@ -246,7 +256,7 @@ $(document).ready(function(){
         //服务器返回的数据类型
         dataType:'json',
         //发送到服务器的数据，对象必须为key/value的格式，jquery会自动转换为字符串格式
-        data:{'back_id':back_id,'_token':csrf_token,'type':'add'}},
+        data:{'back_id':back_id,'_token':csrf_token,'type':'add'},
         success:function(res){
           console.log(res)
           if(res.code == '200'){
@@ -255,8 +265,22 @@ $(document).ready(function(){
           }else{
             layer.msg(res.msg,{icon:2,time:2500})
           }
-        },
+        }
       })
+    });
+    $(".setting_setting_execute").select2({"allowClear":true,"placeholder":{"id":"","text":"\u6307\u5b9a\u8868\u5907\u4efd"}});
+    $(".setting_setting_del").select2({"allowClear":true,"placeholder":{"id":"","text":"\u6307\u5b9a\u8868\u5907\u4efd"}});
+    setting_execute($(".setting_setting_execute").val());
+    setting_del($(".setting_setting_del").val());
+    
+    $('.setting_setting_execute').on('change',function(){
+        var setting_time_val = $(this).val();
+        setting_execute(setting_time_val);
+    })
+
+    $('.setting_setting_del').on('change',function(){
+        var setting_time_val = $(this).val();
+        setting_del(setting_time_val);
     })
 })
 </script>
