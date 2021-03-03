@@ -22,7 +22,10 @@
     "autoload": {
         "psr-4": {
             "Encore\\ApiBackup\\": "src/"
-        }
+        },
+        "files":[
+            "src/Helpers/functions.php"
+        ]
     },
     "extra": {
         "laravel": {
