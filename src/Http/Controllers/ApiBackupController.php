@@ -84,6 +84,10 @@ class ApiBackupController extends Controller
     public function dbAddPost()
     {
         $param = Request()->input();
+        $setting = $param['setting'];
+        $setting = array_merge($setting,setting_time_execute($setting,0,'save'));
+        $setting = array_merge($setting,setting_time_del($setting,0,'save'));
+        $param['setting'] = $setting;
         unset($param['_token']);
         unset($param['_previous_']);
         $Sdk = new \Sdk();
@@ -100,11 +104,22 @@ class ApiBackupController extends Controller
         $Sdk = new \Sdk();
         $res = $Sdk->db_list($data);
         $res['code'] == '200' ? $res['list'] = $res['data']['list'][0] : $res['list'] = [];
-
-        return Admin::content(function (Content $content) use($res){
+        if($res['list']){
+            $setting = $res['list']['setting'];
+            $setting = array_merge($setting,setting_time_execute($setting,0));
+            $setting = array_merge($setting,setting_time_del($setting,0));
+            $res['list']['setting'] = $setting;
+            $execute = api_option($setting['setting_execute']);
+            $del = api_option($setting['setting_del']);
+        }else{
+            $execute = api_option();
+            $del = api_option();
+        }
+        dd($del);
+        return Admin::content(function (Content $content) use($res,$execute,$del){
             $content->header('库备份配置修改');
             $content->description('Api接口');
-            $content->row(view('apibackup::db_edit',['res'=>$res,'back_id'=>Request()->back_id]));
+            $content->row(view('apibackup::db_edit',['res'=>$res,'back_id'=>Request()->back_id,'execute'=>$execute,'del'=>$del]));
         });
     }
 

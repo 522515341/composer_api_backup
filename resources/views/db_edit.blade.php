@@ -122,63 +122,56 @@
                                     <div class="form-group">
                                         <label class="col-sm-2  control-label"></label>
                                         <div class="col-sm-8">
-                                            <p style="color:red">注意事项：请按照 linux系统上的 crontab 进行设置！！！</p>
-                                            <br>
-                                            <p>例子： cron(*/5 * * * *)</p>
-                                            <p><span style="color: red">注意：填写 cron(* * * * *) 将不会备份</span></p>
+                                            <p style="color:red">注意事项：</p>
+                                            <p>每时：每个小时备份</p>
+                                            <p>N小时：
+                                                <span style="color: red">每隔几个小时</span>进行备份
+                                            </p>
+                                            <p><span style="color: red">* </span>代表无设置</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2  control-label">执行间隔</label>
                                         <div class="col-sm-8">
-                                            <div class="col-sm-8">
-                                                <div class="input-group">
-                                                    <input type="text" id="execute_I" name="setting[execute_I]" value="{{$res['list']['setting']['execute_I']}}" class="form-control setting_execute_I" placeholder="请 输入分钟（0-59）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 分钟（0-59）</span></div>
-                                                    <input type="text" id="execute_H" name="setting[execute_H]" value="{{$res['list']['setting']['execute_H']}}" class="form-control setting_execute_I" placeholder="输入小时（0-23）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 小时（0-23）</span></div>
-                                                    <input type="text" id="execute_D" name="setting[execute_D]" value="{{$res['list']['setting']['execute_D']}}" class="form-control setting_execute_I" placeholder="输入天数（1-31）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 天数（1-31）</span></div>
-                                                    <input type="text" id="execute_M" name="setting[execute_M]" value="{{$res['list']['setting']['execute_M']}}" class="form-control setting_execute_I" placeholder="输入月份（1-12）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 月份（1-12）</span></div>
-                                                    <input type="text" id="execute_W" name="setting[execute_W]" value="{{$res['list']['setting']['execute_W']}}" class="form-control setting_execute_I" placeholder="输入星期几（0-7），星期天为 0">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 星期几（0-7），星期天为 0</span></div>
+                                            <div class="col-sm-10">
+                                                <div class="input-group col-sm-10">
+                                                    <select class="form-control setting_setting_execute select2-hidden-accessible" style="width: 100%;" name="setting[setting_execute]" data-value="" tabindex="-1" aria-hidden="true">
+                                                        @foreach ($execute as $v)
+                                                        {{$v}}
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="setting_execute">
+                                                    <div class="setting_execute_div setting_execute_i">
+                                                        <input type="text" id="execute_I" name="setting[execute_I]" value="{{$res['list']['setting']['execute_I']}}" class="form-control setting_execute_I" placeholder="输入分钟（0-59）">
+                                                        <div class="form-control">分</div></div>
+                                                    <input type="hidden" name="setting[execute_H]" value="{{$res['list']['setting']['execute_H']}}">
+                                                    <input type="hidden" name="setting[execute_D]" value="{{$res['list']['setting']['execute_D']}}">
+                                                    <input type="hidden" name="setting[execute_M]" value="{{$res['list']['setting']['execute_M']}}">
+                                                    <input type="hidden" name="setting[execute_W]" value="{{$res['list']['setting']['execute_W']}}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2  control-label"></label>
-                                        <div class="col-sm-8">
-                                            <br>
-                                            <p style="border-top:1px solid rgba(0,0,0,0.3);width:100%"></p>
-                                            <p style="color:red;">以下是删除备份间隔</p></div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-sm-2  control-label">删除执行间隔</label>
                                         <div class="col-sm-8">
-                                            <div class="col-sm-8">
-                                                <div class="input-group">
-                                                    <input type="text" id="del_I" name="setting[del_I]" value="{{$res['list']['setting']['del_I']}}" class="form-control setting_execute_I" placeholder="请 输入分钟（0-59）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 分钟（0-59）</span></div>
-                                                    <input type="text" id="del_H" name="setting[del_H]" value="{{$res['list']['setting']['del_H']}}" class="form-control setting_execute_I" placeholder="输入小时（0-23）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 小时（0-23）</span></div>
-                                                    <input type="text" id="del_D" name="setting[del_D]" value="{{$res['list']['setting']['del_D']}}" class="form-control setting_execute_I" placeholder="输入天数（1-31）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 天数（1-31）</span></div>
-                                                    <input type="text" id="del_M" name="setting[del_M]" value="{{$res['list']['setting']['del_M']}}" class="form-control setting_execute_I" placeholder="输入月份（1-12）">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 月份（1-12）</span></div>
-                                                    <input type="text" id="del_W" name="setting[del_W]" value="{{$res['list']['setting']['del_W']}}" class="form-control setting_execute_I" placeholder="输入星期几（0-7），星期天为 0">
-                                                    <div class="col-sm-8">
-                                                        <span style="color:red">请输入 星期几（0-7），星期天为 0</span></div>
+                                            <div class="col-sm-10">
+                                                <div class="input-group col-sm-10">
+                                                    <select class="form-control setting_setting_del select2-hidden-accessible" style="width: 100%;" name="setting[setting_del]" data-value="" tabindex="-1" aria-hidden="true">
+                                                        @foreach ($del as $v)
+                                                        {{$v}}
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="setting_del">
+                                                    <div class="setting_del_div setting_del_i">
+                                                        <input type="text" id="del_I" name="setting[del_I]" value="{{$res['list']['setting']['del_I']}}" class="form-control setting_del_I" placeholder="输入分钟（0-59）">
+                                                        <div class="form-control">分</div></div>
+                                                    <input type="hidden" name="setting[del_H]" value="{{$res['list']['setting']['del_H']}}">
+                                                    <input type="hidden" name="setting[del_D]" value="{{$res['list']['setting']['del_D']}}">
+                                                    <input type="hidden" name="setting[del_M]" value="{{$res['list']['setting']['del_M']}}">
+                                                    <input type="hidden" name="setting[del_W]" value="{{$res['list']['setting']['del_W']}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -237,6 +230,16 @@
 </div>
 @endif
 <script type="text/javascript">
+execute_I = $('input[name="setting[execute_I]"]').val()
+execute_H = $('input[name="setting[execute_H]"]').val();
+execute_D = $('input[name="setting[execute_D]"]').val();
+execute_M = $('input[name="setting[execute_M]"]').val();
+execute_W = $('input[name="setting[execute_W]"]').val();
+del_I = $('input[name="setting[del_I]"]').val();
+del_H = $('input[name="setting[del_H]"]').val();
+del_D = $('input[name="setting[del_D]"]').val();
+del_M = $('input[name="setting[del_M]"]').val();
+del_W = $('input[name="setting[del_W]"]').val();
 $(document).ready(function(){
     back_id = '{{$back_id}}';
     if('{{$res["code"]}}' !='200' || '{{empty($res["data"]["list"])}}'){
@@ -269,5 +272,20 @@ $(document).ready(function(){
 
     $('.setting_execute_del').iCheck({radioClass:'iradio_minimal-blue'});
     $(".connection").select2({"allowClear":true,"placeholder":{"id":"","text":"\u6307\u5b9a\u8868\u5907\u4efd"}});
+
+    $(".setting_setting_execute").select2({"allowClear":true,"placeholder":{"id":"","text":"\u6307\u5b9a\u8868\u5907\u4efd"}});
+    $(".setting_setting_del").select2({"allowClear":true,"placeholder":{"id":"","text":"\u6307\u5b9a\u8868\u5907\u4efd"}});
+    setting_execute($(".setting_setting_execute").val());
+    setting_del($(".setting_setting_del").val());
+    
+    $('.setting_setting_execute').on('change',function(){
+        var setting_time_val = $(this).val();
+        setting_execute(setting_time_val);
+    })
+
+    $('.setting_setting_del').on('change',function(){
+        var setting_time_val = $(this).val();
+        setting_del(setting_time_val);
+    })
 })
 </script>
