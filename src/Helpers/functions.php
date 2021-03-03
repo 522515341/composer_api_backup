@@ -52,6 +52,59 @@ function api_setting_time_execute($param,$id='0',$type='give'){
     ];
 }
 
+function api_setting_time_del($param,$id='0',$type='give'){
+    $del_I = isset($param['del_I']) ? preg_replace("/[*\/]/i",'',$param['del_I']) : '30';
+    $del_H = isset($param['del_H']) ? preg_replace("/[*\/]/i",'',$param['del_H']) : '1';
+    $del_D = isset($param['del_D']) ? preg_replace("/[*\/]/i",'',$param['del_D']) : '3';
+    $del_M = isset($param['del_M']) ? preg_replace("/[*\/]/i",'',$param['del_M']) : '1';
+    $del_W = isset($param['del_W']) ? preg_replace("/[*\/]/i",'',$param['del_W']) : '1';
+    if($type == 'save'){
+        switch ($param['setting_del']) {
+            case 'minute':
+                $del_I = "*/$del_I";
+                $del_H = $del_D = $del_M = $del_W = '*';
+                break;
+            case 'hours':
+                $del_H = "*/1";
+                $del_D = $del_M = $del_W = '*';
+                break;
+            case 'n_hours':
+                $del_H = "*/$del_H";
+                $del_D = $del_M = $del_W = '*';
+                break;
+            case 'day':
+                $del_D = "*/1";
+                $del_M = $del_W = '*';
+                break;
+            case 'n_day':
+                $del_D = "*/$del_D";
+                $del_M = $del_W = '*';
+                break;
+            case 'month':
+                $del_M = "*/1";
+                $del_W = '*';
+                break;
+            case 'n_month':
+                $del_M = "*/$del_M";
+                $del_W = '*';
+                break;
+            default:
+                $del_I = "30";
+                $del_H = "*/1";
+                $del_D = $del_M = $del_W = '*';
+                break;
+        }
+    }
+
+    return [
+        'del_I' => $del_I !== ''?$del_I:'*',
+        'del_H' => $del_H !== ''?$del_H:'*',
+        'del_D' => $del_D !== ''?$del_D:'*',
+        'del_M' => $del_M !== ''?$del_M:'*',
+        'del_W' => $del_W !== ''?$del_W:'*',
+    ];
+}
+
 function api_option_note($str='not')
 {
     $str ? $str = $str : $str = 'not';
