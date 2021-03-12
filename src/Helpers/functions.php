@@ -6,6 +6,11 @@ function api_setting_time_execute($param,$id='0',$type='give'){
     $execute_M = isset($param['execute_M']) ? preg_replace("/[*\/]/i",'',$param['execute_M']) : '1';
     $execute_W = isset($param['execute_W']) ? preg_replace("/[*\/]/i",'',$param['execute_W']) : '1';
     if($type == 'save'){
+        $execute_I !== '' ? false : $execute_I='30';
+        $execute_H !== '' ? false : $execute_H='1';
+        $execute_D !== '' ? false : $execute_D='3';
+        $execute_M !== '' ? false : $execute_M='1';
+        $execute_W !== '' ? false : $execute_W='1';
         switch ($param['setting_execute']) {
             case 'minute':
                 $execute_I = "*/$execute_I";
@@ -59,6 +64,11 @@ function api_setting_time_del($param,$id='0',$type='give'){
     $del_M = isset($param['del_M']) ? preg_replace("/[*\/]/i",'',$param['del_M']) : '1';
     $del_W = isset($param['del_W']) ? preg_replace("/[*\/]/i",'',$param['del_W']) : '1';
     if($type == 'save'){
+        $del_I !== '' ? false : $del_I='30';
+        $del_H !== '' ? false : $del_H='1';
+        $del_D !== '' ? false : $del_D='3';
+        $del_M !== '' ? false : $del_M='1';
+        $del_W !== '' ? false : $del_w='1';
         switch ($param['setting_del']) {
             case 'minute':
                 $del_I = "*/$del_I";
